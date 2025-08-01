@@ -1,562 +1,1078 @@
 # Claude 提示工程指南
 
-> 基於Anthropic官方文檔的Claude專屬優化策略
+> **Anthropic Claude 的專業實踐手冊** - 發揮AI助理的獨特優勢與特色功能
 
-## 📋 概述
+## 📖 概述
 
-Claude是Anthropic開發的AI助理，具有獨特的架構和能力。本指南基於Anthropic官方文檔和研究，提供針對Claude模型的專業提示工程策略。
+Claude是由Anthropic開發的先進AI助理，具有獨特的憲章訓練、XML結構支持和擴展思考能力。本指南基於Anthropic官方文檔和最佳實踐，為您提供深度發揮Claude特色功能的完整策略。
 
-## 🎯 Claude 獨特特性
+> 💡 **白話解釋**  
+> **Claude和其他AI有什麼不同？** 想像Claude是一個特別有禮貌、會深度思考的助理。它不只會回答您的問題，還會在回答前仔細思考，就像在腦海中自言自語：「讓我想想...首先這樣...然後那樣...」而且您可以「看到」它的思考過程！就像看到老師在黑板上寫解題步驟一樣。
 
-### 1. 擴展思考模式（Extended Thinking）
-Claude支援特殊的思考模式，能夠進行更深入的推理：
+## 🎯 學習目標
 
-```
-思考預算層級：
-- "think" → 基礎思考模式
-- "think hard" → 深度思考模式  
-- "think harder" → 更深度思考
-- "ultrathink" → 最深度思考模式
-```
+完成本指南學習後，您將能夠：
 
-### 2. XML標籤優勢
-Claude在訓練時使用了XML標籤，因此對結構化提示特別敏感：
-```xml
-<instructions>
-你的具體指令
-</instructions>
+- ✅ **特色掌握**：深入理解Claude的憲章訓練、XML結構和思考預算等獨特功能
+- ✅ **結構設計**：熟練運用XML標籤創建高效的結構化提示
+- ✅ **思考控制**：掌握不同層級的思考預算管理和可視化技術
+- ✅ **角色維護**：設計和維持長期對話中的一致性角色表現
 
-<example>
-範例內容
-</example>
+## 📚 先決條件
 
-<document>
-參考文檔
-</document>
-```
+在開始學習本指南之前，建議您：
 
-### 3. 思考標籤支援
-Claude支援內部思考過程的可視化：
-```xml
-<thinking>
-讓我分析這個問題...
-首先，我需要考慮...
-然後，我應該...
-</thinking>
-
-基於以上思考，我的答案是...
-```
-
-## 🚀 核心最佳實踐
-
-### 1. 「請一步一步思考」的Claude優化版本
-
-#### 基礎版本
-```
-請一步一步思考這個問題，並在 <thinking></thinking> 標籤中顯示你的推理過程。
-```
-
-#### 進階版本
-```
-請深入思考這個問題。使用 <thinking> 標籤記錄你的思考過程，然後提供最終答案。
-
-<thinking>
-[Claude會在這裡顯示詳細的思考過程]
-</thinking>
-
-[最終答案]
-```
-
-### 2. 思考預算管理
-
-#### 不同層級的使用場景
-```
-- "think" → 簡單分析任務
-  例：「請think一下這個數學問題的解法」
-
-- "think hard" → 複雜推理任務
-  例：「請think hard分析這個商業策略的可行性」
-
-- "think harder" → 多步驟邏輯推理
-  例：「請think harder解決這個邏輯謎題」
-
-- "ultrathink" → 最複雜的創新性問題
-  例：「請ultrathink設計一個創新的解決方案」
-```
-
-## 🏗️ XML結構化提示設計
-
-### 1. 基本結構模板
-
-#### 分析任務模板
-```xml
-<task>
-分析以下商業案例並提供策略建議
-</task>
-
-<context>
-公司背景：中型科技公司，年收入5000萬
-市場情況：競爭激烈，增長放緩
-挑戰：客戶獲取成本上升，用戶留存率下降
-</context>
-
-<requirements>
-1. 分析根本原因
-2. 提出3個具體解決方案
-3. 評估每個方案的風險和收益
-4. 推薦最佳方案並說明理由
-</requirements>
-
-<format>
-請按照以下格式回答：
-1. 問題分析
-2. 解決方案
-3. 風險評估
-4. 最終建議
-</format>
-```
-
-### 2. 教學場景模板
-
-#### 蘇格拉底式教學
-```xml
-<role>
-你是一位經驗豐富的教師，採用蘇格拉底式教學方法
-</role>
-
-<goal>
-幫助學生理解[概念名稱]，但不要直接給出答案
-</goal>
-
-<method>
-1. 通過提問引導學生思考
-2. 基於學生回答調整問題
-3. 逐步引導到核心概念
-4. 鼓勵學生自己得出結論
-</method>
-
-<student_level>
-[描述學生的背景知識水平]
-</student_level>
-
-<instructions>
-開始與學生的對話，用第一個引導性問題開始...
-</instructions>
-```
-
-### 3. 代碼生成模板
-
-#### 結構化代碼請求
-```xml
-<task>
-創建一個Python類來管理用戶帳戶
-</task>
-
-<specifications>
-<functionality>
-- 用戶註冊和登錄
-- 密碼加密存儲
-- 用戶資料更新
-- 帳戶狀態管理
-</functionality>
-
-<requirements>
-- Python 3.8+
-- 使用類型提示
-- 遵循PEP 8風格
-- 包含完整的錯誤處理
-- 添加詳細的文檔字符串
-</requirements>
-
-<constraints>
-- 不使用外部數據庫
-- 密碼必須加密
-- 包含輸入驗證
-</constraints>
-</specifications>
-
-<output_format>
-請提供：
-1. 完整的類定義
-2. 使用範例
-3. 測試代碼
-4. 設計說明
-</output_format>
-```
-
-## 💡 Claude專屬進階技巧
-
-### 1. 角色一致性維護
-
-#### 持續角色設定
-```xml
-<role_definition>
-你是一位專業的數據科學家，有以下特徵：
-- 10年機器學習經驗
-- 擅長商業應用
-- 溝通清晰直接
-- 重視數據驗證
-- 謹慎對待不確定性
-</role_definition>
-
-<behavior_guidelines>
-在整個對話中，請始終：
-1. 用數據支持你的觀點
-2. 承認分析的局限性
-3. 提供可執行的建議
-4. 使用專業但易懂的語言
-</behavior_guidelines>
-
-<context_memory>
-記住我們正在討論客戶流失預測項目，
-已確定使用隨機森林模型，
-現在需要討論特徵工程策略。
-</context_memory>
-```
-
-### 2. 多步驟任務鏈
-
-#### 提示鏈設計
-```xml
-<!-- 步驟1：數據分析 -->
-<step1>
-<task>分析以下銷售數據，識別趨勢和異常</task>
-<data>[數據內容]</data>
-<output>將結果保存為analysis_result</output>
-</step1>
-
-<!-- 步驟2：基於分析結果的建議 -->
-<step2>
-<task>基於analysis_result，提供銷售策略建議</task>
-<context>使用前一步驟的分析結果</context>
-<focus>可執行的具體行動</focus>
-</step2>
-```
-
-### 3. 自我修正機制
-
-#### 內建驗證流程
-```xml
-<primary_task>
-計算複合增長率並分析投資回報
-</primary_task>
-
-<verification_process>
-完成計算後，請執行以下檢查：
-1. 數學計算是否正確？
-2. 假設是否合理？
-3. 結論是否符合邏輯？
-4. 是否考慮了重要風險因素？
-</verification_process>
-
-<correction_instruction>
-如果發現錯誤，請在<correction>標籤中說明並提供修正版本
-</correction_instruction>
-```
-
-## 🔬 Claude特色功能應用
-
-### 1. 憲章訓練影響
-
-Claude經過憲章訓練，特別注重：
-- **有益性**：提供真正有幫助的回答
-- **無害性**：避免有害或偏見內容
-- **誠實性**：承認不確定性和知識局限
-
-#### 利用這些特性的提示設計
-```xml
-<task>
-評估這個商業決策的潛在風險
-</task>
-
-<ethical_considerations>
-請特別關注：
-1. 對員工的影響
-2. 客戶利益保護
-3. 環境責任
-4. 長期可持續性
-</ethical_considerations>
-
-<honesty_requirement>
-如果某些風險難以評估或數據不足，
-請明確說明這些限制，不要推測
-</honesty_requirement>
-```
-
-### 2. 多語言能力
-
-#### 跨語言任務設計
-```xml
-<task>
-翻譯並分析以下商業文檔的關鍵要點
-</task>
-
-<source_language>英文</source_language>
-<target_language>正體中文</target_language>
-
-<requirements>
-1. 準確翻譯專業術語
-2. 保持原文的語調和風格
-3. 標註文化差異需要注意的地方
-4. 提供關鍵概念的雙語對照
-</requirements>
-
-<cultural_sensitivity>
-注意商業慣例和法律制度的差異
-</cultural_sensitivity>
-```
-
-## 📊 性能優化策略
-
-### 1. 思考預算優化
-
-#### 根據任務複雜度調整
-```
-簡單任務（事實查詢）：
-→ 不使用特殊思考指令
-
-中等任務（分析比較）：
-→ 「請think並分析...」
-
-複雜任務（創新設計）：
-→ 「請think harder，創造性地解決...」
-
-極複雜任務（多維度戰略規劃）：
-→ 「請ultrathink，綜合考慮...」
-```
-
-### 2. 上下文管理
-
-#### 長對話優化
-```xml
-<conversation_summary>
-總結到目前為止討論的要點：
-1. 已確定的決策
-2. 待解決的問題
-3. 下一步行動
-</conversation_summary>
-
-<current_focus>
-現在我們專注於：[具體議題]
-</current_focus>
-
-<relevant_context>
-與當前討論最相關的背景：[關鍵信息]
-</relevant_context>
-```
-
-## 🎓 教學應用特色
-
-### 1. 個性化學習指導
-
-#### 適應性教學提示
-```xml
-<learner_profile>
-<background>[學習者背景]</background>
-<level>[當前水平]</level>
-<goals>[學習目標]</goals>
-<preferences>[學習偏好]</preferences>
-</learner_profile>
-
-<adaptive_instruction>
-根據學習者特徵調整：
-1. 解釋的深度和複雜度
-2. 使用的例子和類比
-3. 練習的難度和類型
-4. 反饋的詳細程度
-</adaptive_instruction>
-
-<progress_tracking>
-在每次互動後評估學習進展並調整策略
-</progress_tracking>
-```
-
-### 2. 批判性思維培養
-
-#### 引導深度思考
-```xml
-<thinking_framework>
-請使用以下思考框架分析問題：
-1. 問題的本質是什麼？
-2. 有哪些不同的觀點？
-3. 證據的品質如何？
-4. 邏輯推理是否有效？
-5. 結論的局限性在哪裡？
-</thinking_framework>
-
-<socratic_questions>
-通過以下類型問題引導思考：
-- 「你為什麼這樣認為？」
-- 「有沒有其他可能的解釋？」
-- 「這個假設的前提是什麼？」
-- 「如果情況相反會怎樣？」
-</socratic_questions>
-```
-
-## 🛠️ 工具整合與API使用
-
-### 1. 系統消息最佳實踐
-
-#### Claude API系統消息設計
-```python
-system_message = """
-你是一位專業的商業分析師。請遵循以下指導原則：
-
-核心特質：
-- 數據驅動的分析方法
-- 實用且可執行的建議
-- 承認分析的局限性
-- 清晰的溝通風格
-
-工作方法：
-1. 總是要求澄清模糊的要求
-2. 提供結構化的分析
-3. 包含風險評估
-4. 建議具體的下一步行動
-
-輸出格式：
-- 使用清晰的標題和要點
-- 優先顯示關鍵發現
-- 包含支持數據
-- 明確標註假設和限制
-"""
-```
-
-### 2. 多輪對話管理
-
-#### 對話狀態維護
-```xml
-<conversation_state>
-<current_topic>[當前主題]</current_topic>
-<decisions_made>[已做決定]</decisions_made>
-<pending_questions>[待解決問題]</pending_questions>
-<next_actions>[下一步行動]</next_actions>
-</conversation_state>
-
-<context_preservation>
-在每次回應中，考慮完整的對話歷史，
-確保一致性和連續性
-</context_preservation>
-```
-
-## 🔍 常見問題與解決方案
-
-### 1. 過度思考問題
-
-#### 問題
-使用「ultrathink」導致回應過於冗長
-
-#### 解決方案
-```xml
-<thinking_constraint>
-請ultrathink分析這個問題，但將最終回應控制在300字以內。
-在thinking標籤中詳細思考，在最終回應中提供精煉的要點。
-</thinking_constraint>
-```
-
-### 2. XML格式錯誤
-
-#### 問題
-XML標籤格式不正確導致解析問題
-
-#### 解決方案
-```xml
-<!-- 正確格式示範 -->
-<instructions>
-清晰的指令內容
-</instructions>
-
-<examples>
-<example1>範例內容1</example1>
-<example2>範例內容2</example2>
-</examples>
-
-<!-- 避免嵌套複雜結構 -->
-```
-
-### 3. 角色漂移問題
-
-#### 問題
-長對話中Claude偏離設定的角色
-
-#### 解決方案
-```xml
-<role_reminder>
-記住你是[角色描述]，請保持這個角色的特徵：
-- [特徵1]
-- [特徵2]
-- [特徵3]
-</role_reminder>
-
-<behavior_check>
-在回應前檢查：這個回答符合我的角色設定嗎？
-</behavior_check>
-```
-
-## 📈 高級應用案例
-
-### 1. 研究助手配置
-
-#### 學術研究支援
-```xml
-<research_role>
-你是一位研究助手，專精於[研究領域]
-</research_role>
-
-<research_methodology>
-1. 批判性評估來源可靠性
-2. 識別研究空白和矛盾
-3. 建議進一步調查方向
-4. 提供平衡的觀點分析
-</research_methodology>
-
-<citation_requirement>
-所有主張都必須有適當的支持證據，
-如果缺乏證據請明確說明
-</citation_requirement>
-```
-
-### 2. 創意協作夥伴
-
-#### 創意專案支援
-```xml
-<creative_collaboration>
-我們正在共同開發一個創意項目。
-你的角色是創意夥伴和批評者。
-</creative_collaboration>
-
-<creative_process>
-1. 鼓勵創新思維
-2. 提供建設性反饋
-3. 建議改進方向
-4. 幫助克服創意障礙
-</creative_process>
-
-<balance_guidance>
-在創意自由和實用性之間找到平衡
-</balance_guidance>
-```
-
-## 📚 學習資源與參考
-
-### Anthropic官方資源
-- [Claude提示工程概述](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
-- [擴展思考技巧](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/extended-thinking-tips)
-- [Claude 4最佳實踐](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices)
-
-### 互動式學習
-- [Anthropic互動式提示工程教程](https://github.com/anthropics/prompt-eng-interactive-tutorial)
-
-## 🔑 關鍵要點總結
-
-1. **利用XML結構**：Claude對XML標籤特別敏感，善用結構化提示
-2. **思考預算管理**：根據任務複雜度選擇適當的思考層級
-3. **思考標籤可視化**：使用`<thinking>`標籤了解推理過程
-4. **角色一致性**：明確設定並維護角色特徵
-5. **自我修正機制**：內建驗證和修正流程
-6. **憲章訓練優勢**：利用Claude的有益、無害、誠實特性
-7. **提示鏈設計**：將複雜任務分解為連續步驟
+- ✅ 完成[提示工程基礎概念](./01-提示工程基礎概念.md)和[思維鏈技術詳解](./02-思維鏈技術詳解.md)
+- ✅ 具備Claude API或Claude.ai的基本使用經驗
+- ✅ 了解XML基本語法和結構化標記概念
 
 ---
 
-*充分發揮Claude的獨特優勢，創造更智能的AI協作體驗！*
+## 🔬 Claude 核心技術特性
+
+### 💡 憲章訓練架構
+
+<div style="background-color: #E3F2FD; padding: 20px; border-left: 4px solid #2196F3; margin: 20px 0;">
+
+**Constitutional AI (CAI) 訓練特點**
+- **有益性 (Helpful)**：積極提供有用且相關的協助
+- **無害性 (Harmless)**：避免有害、偏見或不當內容
+- **誠實性 (Honest)**：承認不確定性和知識邊界
+- **自我修正**：能夠識別和糾正錯誤推理
+
+</div>
+
+> 💡 **白話解釋**  
+> **什麼是憲章訓練？** 想像Claude受過「品德教育」，就像家長教小孩要誠實、善良、有禮貌一樣。Anthropic給Claude制定了一套「行為準則」（憲章），讓它不只聰明，還很有品德。所以Claude會說「我不確定」而不是瞎編答案，會拒絕幫您做壞事，會真心想幫助您解決問題。
+
+### 🎯 獨特功能對比
+
+<table>
+<tr>
+<th width="25%">功能特色</th>
+<th width="35%">Claude實現方式</th>
+<th width="40%">實際應用優勢</th>
+</tr>
+<tr>
+<td><strong>擴展思考模式</strong></td>
+<td>• think, think hard, think harder, ultrathink<br>• 可控制的思考深度</td>
+<td>• 複雜問題深度分析<br>• 透明的推理過程<br>• 可調節的思考成本</td>
+</tr>
+<tr>
+<td><strong>XML結構支持</strong></td>
+<td>• 訓練時使用XML標籤<br>• 天然的結構化理解</td>
+<td>• 更清晰的指令組織<br>• 複雜任務結構化<br>• 精確的內容區分</td>
+</tr>
+<tr>
+<td><strong>思考標籤可視化</strong></td>
+<td>• &lt;thinking&gt;內部思考過程&lt;/thinking&gt;<br>• 推理過程透明化</td>
+<td>• 理解AI推理邏輯<br>• 驗證答案可靠性<br>• 學習解題方法</td>
+</tr>
+</table>
+
+### 🔧 模型版本選擇
+
+**Claude 3 系列比較**
+
+<table>
+<tr>
+<th>模型版本</th>
+<th>核心特色</th>
+<th>適用場景</th>
+<th>提示工程要點</th>
+</tr>
+<tr>
+<td><strong>Claude 3 Opus</strong></td>
+<td>• 最高推理能力<br>• 複雜任務處理<br>• 創意表現優秀</td>
+<td>• 戰略規劃<br>• 學術研究<br>• 創意寫作</td>
+<td>• 可使用複雜XML結構<br>• 支持長對話維護<br>• 適合多步驟推理</td>
+</tr>
+<tr>
+<td><strong>Claude 3 Sonnet</strong></td>
+<td>• 平衡性能與速度<br>• 穩定可靠<br>• 成本效益佳</td>
+<td>• 日常分析<br>• 內容生成<br>• 客戶服務</td>
+<td>• 標準XML結構<br>• 基礎思考預算<br>• 結構化任務導向</td>
+</tr>
+<tr>
+<td><strong>Claude 3 Haiku</strong></td>
+<td>• 快速響應<br>• 輕量級任務<br>• 高效處理</td>
+<td>• 簡單查詢<br>• 快速分析<br>• 批量處理</td>
+<td>• 簡化提示結構<br>• 避免過度思考<br>• 直接任務導向</td>
+</tr>
+</table>
+
+---
+
+## 🛠️ XML結構化提示設計
+
+### 1. 基礎XML模板架構
+
+#### 🏗️ 標準企業分析模板
+
+<div style="background-color: #F3E5F5; padding: 20px; border-left: 4px solid #9C27B0; margin: 20px 0;">
+
+**Claude專用XML結構**
+```xml
+<task>
+[明確的任務描述和目標]
+</task>
+
+<context>
+[相關背景信息和環境設定]
+</context>
+
+<requirements>
+[具體要求和限制條件]
+</requirements>
+
+<thinking_level>
+[think/think hard/think harder/ultrathink]
+</thinking_level>
+
+<output_format>
+[期望的回答格式和結構]
+</output_format>
+```
+
+</div>
+
+> 💡 **白話解釋**  
+> **為什麼Claude特別喜歡XML？** 想像您在整理文件，用不同顏色的文件夾分類：紅色放「待辦事項」、藍色放「參考資料」、綠色放「完成事項」。XML標籤就像這些彩色文件夾，讓Claude能夠清楚知道哪部分是指令、哪部分是資料、哪部分是要求。因為Claude在「學習」時就是用這種方式整理信息的，所以它特別擅長理解這種結構。
+
+#### 💻 實際應用範例
+
+**範例：市場策略分析**
+
+<div style="background-color: #FFEBEE; padding: 15px; border-radius: 5px; margin: 10px 0;">
+
+❌ **基礎提示**
+```
+分析我們公司進入東南亞市場的策略
+```
+
+**問題**：缺乏結構，信息不充分，無法充分發揮Claude的能力。
+
+</div>
+
+<div style="background-color: #E8F5E8; padding: 15px; border-radius: 5px; margin: 10px 0;">
+
+✅ **Claude優化XML提示**
+```xml
+<task>
+為中型科技公司制定進入東南亞市場的綜合策略分析
+</task>
+
+<context>
+<company_profile>
+- 規模：員工300人，年營收1億美元
+- 主營業務：企業級SaaS軟件
+- 核心優勢：數據分析和自動化工具
+- 當前市場：主要在北美和歐洲
+</company_profile>
+
+<market_background>
+- 目標市場：東南亞（重點：新加坡、泰國、越南）
+- 市場特點：快速增長的數位化需求
+- 競爭狀況：本土企業強勢，國際企業陸續進入
+</market_background>
+</context>
+
+<requirements>
+1. 進行SWOT分析（優勢、劣勢、機會、威脅）
+2. 評估進入策略選項（直接投資vs合作vs收購）
+3. 制定3年執行計劃與里程碑
+4. 識別關鍵風險因素和應對措施
+5. 預估投資需求和預期回報
+</requirements>
+
+<thinking_level>think harder</thinking_level>
+
+<output_format>
+請按照以下結構提供分析：
+1. 執行摘要（200字內）
+2. 市場機會分析
+3. 策略選項評估
+4. 推薦策略與理由
+5. 實施計劃與時程
+6. 風險管控措施
+7. 成功指標設定
+</output_format>
+```
+
+</div>
+
+### 2. 思考預算控制系統
+
+#### 🎚️ 四層思考預算架構
+
+> 💡 **白話解釋**  
+> **什麼是思考預算？** 想像Claude的「大腦電力」有不同檔位，就像冷氣機有「微風、強風、超強風」一樣。簡單問題用「微風」就夠了（think），複雜問題要開「強風」（think hard），超級難題需要「超強風」（ultrathink）。不同檔位消耗的「電力」（成本）不同，但解決問題的能力也不同。
+
+<table>
+<tr>
+<th width="20%">思考層級</th>
+<th width="25%">適用場景</th>
+<th width="30%">思考深度</th>
+<th width="25%">使用範例</th>
+</tr>
+<tr>
+<td><strong>think</strong></td>
+<td>基礎分析任務</td>
+<td>• 結構化思考<br>• 邏輯清晰<br>• 標準推理</td>
+<td>• 數據解釋<br>• 簡單比較<br>• 基礎建議</td>
+</tr>
+<tr>
+<td><strong>think hard</strong></td>
+<td>複雜問題解決</td>
+<td>• 多角度分析<br>• 深度推理<br>• 細節考量</td>
+<td>• 戰略規劃<br>• 系統設計<br>• 風險評估</td>
+</tr>
+<tr>
+<td><strong>think harder</strong></td>
+<td>高複雜度任務</td>
+<td>• 全面性分析<br>• 創新思維<br>• 多層推理</td>
+<td>• 創新方案<br>• 複雜決策<br>• 學術研究</td>
+</tr>
+<tr>
+<td><strong>ultrathink</strong></td>
+<td>極高難度挑戰</td>
+<td>• 突破性思考<br>• 深度洞察<br>• 原創性分析</td>
+<td>• 前沿研究<br>• 變革性策略<br>• 哲學思辨</td>
+</tr>
+</table>
+
+#### 💻 思考預算實戰應用
+
+**投資決策分析範例**
+
+```xml
+<task>
+評估是否應該投資一家AI初創公司
+</task>
+
+<investment_details>
+<company_info>
+- 公司：專注於醫療AI診斷的初創企業
+- 團隊：5名PhD，2年營運經驗
+- 技術：深度學習影像識別
+- 估值：500萬美元A輪
+</company_info>
+
+<financial_data>
+- 當前營收：年收入50萬美元
+- 成長率：月增長15%
+- 客戶：3家醫院試點
+- 競爭對手：Google Health、IBM Watson Health等
+</financial_data>
+</investment_details>
+
+<analysis_requirements>
+1. 技術壁壘與競爭優勢評估
+2. 市場規模與增長潛力
+3. 團隊執行能力分析
+4. 財務模型與回報預測
+5. 風險因素與退出策略
+</analysis_requirements>
+
+<thinking_level>ultrathink</thinking_level>
+
+<thinking>
+這是一個極其複雜的投資決策，需要從多個維度進行深度分析...
+
+技術層面：醫療AI是高門檻領域，需要評估：
+- 算法的創新性和準確性
+- 數據獲取的難度和質量
+- 監管批准的複雜性
+- 與現有醫療系統的整合性
+
+市場層面：
+- 醫療AI市場預計2030年達到1480億美元
+- 但監管嚴格，商業化週期長
+- 需要評估這家公司在細分領域的定位
+
+競爭分析：
+- Google、IBM等大廠具有資源優勢
+- 但小公司可能在特定細分領域更專精
+- 關鍵是找到差異化競爭優勢
+
+財務建模需考慮：
+- 醫療AI的長期回報週期
+- 監管風險對時程的影響
+- 規模化的可能性和成本結構
+
+風險評估：
+- 技術風險：算法是否真正superior
+- 市場風險：醫院採用新技術的保守性
+- 監管風險：FDA等審批的不確定性
+- 競爭風險：大廠降維打擊的可能
+</thinking>
+
+<output_format>
+請提供：
+1. 投資建議（投資/不投資/觀望）
+2. 詳細分析報告（各維度評分）
+3. 關鍵成功因素
+4. 主要風險點
+5. 如果投資，建議的條件和監控指標
+</output_format>
+```
+
+---
+
+## 🚀 Claude專屬進階技術
+
+### 1. 角色一致性維護系統
+
+#### 🎭 長期角色設定架構
+
+> 💡 **白話解釋**  
+> **什麼是角色一致性？** 想像您請了一位專業顧問，您希望他在整個項目期間都保持專業、一致的建議風格。但是如果對話很長，AI可能會「忘記」自己是誰，就像演員演到一半突然忘了自己演什麼角色。Claude的角色維護系統就像給演員一個「角色提醒卡」，讓他始終記得自己的專業身份。
+
+**專業顧問角色模板**
+
+```xml
+<role_definition>
+<identity>資深商業策略顧問</identity>
+<experience>15年跨國企業諮詢經驗</experience>
+<specializations>
+- 市場進入策略
+- 組織變革管理
+- 數位轉型規劃
+- 風險評估與管控
+</specializations>
+<personality_traits>
+- 數據驅動決策
+- 務實且可執行
+- 直接但有建設性
+- 重視長期價值
+</personality_traits>
+</role_definition>
+
+<behavior_guidelines>
+<communication_style>
+- 使用商業專業術語，但保持易懂
+- 提供具體的數據支持
+- 承認不確定性和假設
+- 主動識別潛在風險
+</communication_style>
+
+<decision_framework>
+- 總是考慮ROI和成本效益
+- 評估短期vs長期影響
+- 關注可執行性和資源需求
+- 提供明確的下一步行動
+</decision_framework>
+</behavior_guidelines>
+
+<context_memory>
+<current_project>為中型製造業公司制定數位轉型策略</current_project>
+<key_decisions>
+- 已確定雲端優先策略
+- 選擇分階段實施方式
+- 重點關注供應鏈數位化
+</key_decisions>
+<client_preferences>
+- 傾向保守的技術選擇
+- 重視員工培訓和變革管理
+- 預算約束需要考慮
+</client_preferences>
+</context_memory>
+```
+
+### 2. 多步驟任務鏈設計
+
+#### 🔗 複雜項目分解策略
+
+**企業內部培訓計劃開發**
+
+```xml
+<!-- 第一階段：需求分析 -->
+<phase_1>
+<task>分析企業培訓需求並建立基線</task>
+<deliverables>
+- 技能差距分析報告
+- 員工學習偏好調查
+- 當前培訓效果評估
+- 優先培訓領域識別
+</deliverables>
+<thinking_level>think hard</thinking_level>
+<output_variable>training_needs_analysis</output_variable>
+</phase_1>
+
+<!-- 第二階段：課程設計 -->
+<phase_2>
+<task>基於第一階段結果設計培訓課程框架</task>
+<input_reference>使用 training_needs_analysis 的結果</input_reference>
+<deliverables>
+- 課程體系架構
+- 每門課程的學習目標
+- 教學方法和形式選擇
+- 評估和認證機制
+</deliverables>
+<thinking_level>think harder</thinking_level>
+<output_variable>curriculum_framework</output_variable>
+</phase_2>
+
+<!-- 第三階段：實施計劃 -->
+<phase_3>
+<task>制定詳細的實施和推廣計劃</task>
+<input_reference>
+使用 training_needs_analysis 和 curriculum_framework
+</input_reference>
+<deliverables>
+- 6個月詳細時程表
+- 資源需求和預算估算
+- 風險管控計劃
+- 成功指標和KPI設定
+</deliverables>
+<thinking_level>think hard</thinking_level>
+<output_variable>implementation_plan</output_variable>
+</phase_3>
+
+<!-- 整合階段：完整方案 -->
+<integration_phase>
+<task>整合所有階段成果，形成完整的培訓計劃</task>
+<input_reference>
+使用所有前階段的輸出變量
+</input_reference>
+<thinking_level>ultrathink</thinking_level>
+
+<final_deliverable>
+請提供一份完整的企業培訓計劃，包括：
+1. 執行摘要
+2. 需求分析總結
+3. 完整課程體系
+4. 實施路線圖
+5. 預算和資源計劃
+6. 成功評估框架
+</final_deliverable>
+</integration_phase>
+```
+
+### 3. 自我修正與品質控制
+
+#### ✅ 內建驗證機制
+
+**財務分析自檢系統**
+
+```xml
+<primary_analysis>
+<task>分析公司Q4財務表現並預測明年趨勢</task>
+<data>[財務數據]</data>
+<thinking_level>think harder</thinking_level>
+</primary_analysis>
+
+<self_verification>
+<mathematical_check>
+請驗證所有計算是否正確：
+- 成長率計算
+- 比率分析
+- 趨勢投影
+</mathematical_check>
+
+<logic_review>
+檢查推理邏輯：
+- 結論是否從數據合理推出？
+- 是否考慮了重要的外部因素？
+- 假設是否明確且合理？
+</logic_review>
+
+<completeness_audit>
+評估分析完整性：
+- 是否遺漏重要的財務指標？
+- 風險因素是否充分識別？
+- 建議是否具體可執行？
+</completeness_audit>
+
+<uncertainty_assessment>
+明確標註不確定性：
+- 哪些預測的可信度較低？
+- 關鍵假設的敏感度如何？
+- 需要額外數據驗證的地方？
+</uncertainty_assessment>
+</self_verification>
+
+<correction_protocol>
+如果發現問題，請在此處提供修正：
+<correction>
+[具體的修正內容和理由]
+</correction>
+</correction_protocol>
+```
+
+---
+
+## 🎨 特殊應用場景
+
+### 1. 教學與培訓應用
+
+#### 🎓 蘇格拉底式對話系統
+
+**概念理解引導框架**
+
+```xml
+<teaching_setup>
+<role>蘇格拉底式導師</role>
+<teaching_philosophy>
+通過提問引導學生自主發現知識，而非直接告知答案
+</teaching_philosophy>
+
+<student_profile>
+<background>[學生背景信息]</background>
+<current_understanding>[當前理解水平]</current_understanding>
+<learning_goal>[期望達成的學習目標]</learning_goal>
+</student_profile>
+</teaching_setup>
+
+<questioning_strategy>
+<level_1_questions>
+基礎理解檢查：
+- "你對[概念]的理解是什麼？"
+- "能想到相關的例子嗎？"
+- "這讓你聯想到什麼？"
+</level_1_questions>
+
+<level_2_questions>
+深度思考引導：
+- "為什麼你認為會這樣？"
+- "如果條件改變會如何？"
+- "這個原理還能應用在哪裡？"
+</level_2_questions>
+
+<level_3_questions>
+批判性思維培養：
+- "有沒有例外情況？"
+- "其他人可能怎麼看這個問題？"
+- "你的結論有什麼局限性？"
+</level_3_questions>
+</questioning_strategy>
+
+<adaptation_rules>
+根據學生回答調整策略：
+- 理解正確 → 深化探討
+- 理解有誤 → 引導重新思考
+- 理解不完整 → 提示關鍵要素
+- 理解超預期 → 挑戰更高層次
+</adaptation_rules>
+```
+
+### 2. 研究與分析支持
+
+#### 🔬 學術研究助手配置
+
+**文獻綜述協助系統**
+
+```xml
+<research_assistant_setup>
+<expertise_domain>[具體研究領域]</expertise_domain>
+<research_methodology>
+<approach>系統性文獻回顧</approach>
+<standards>遵循PRISMA指導原則</standards>
+<critical_evaluation>
+- 評估研究設計品質
+- 識別偏見和局限性
+- 分析結果的可信度
+- 評估實際應用價值
+</critical_evaluation>
+</research_methodology>
+
+<source_evaluation_criteria>
+<quality_indicators>
+- 期刊影響因子和聲譽
+- 同行評議品質
+- 研究方法嚴謹性
+- 樣本大小和代表性
+</quality_indicators>
+
+<bias_detection>
+- 選擇偏見
+- 發表偏見
+- 資助來源影響
+- 統計操作嫌疑
+</bias_detection>
+</source_evaluation_criteria>
+</research_assistant_setup>
+
+<synthesis_framework>
+<task>綜合多項研究，識別一致性發現和爭議點</task>
+
+<analysis_structure>
+1. 方法學比較分析
+2. 結果一致性評估
+3. 矛盾結果的可能原因
+4. 研究空白和未來方向
+5. 實際應用建議
+</analysis_structure>
+
+<thinking_level>ultrathink</thinking_level>
+
+<output_requirements>
+請提供：
+- 結構化的文獻綜述
+- 證據品質評估
+- 明確的研究限制說明
+- 基於證據的結論
+- 未來研究建議
+</output_requirements>
+</synthesis_framework>
+```
+
+### 3. 創意協作與頭腦風暴
+
+#### 💡 創新思維促進系統
+
+**產品創新工作坊**
+
+```xml
+<creative_collaboration>
+<session_goal>為環保科技公司開發創新產品概念</session_goal>
+
+<innovation_framework>
+<divergent_thinking>
+鼓勵創意發散：
+- 暫停批判性思維
+- 歡迎大膽和異想天開的想法
+- 建立在他人想法基礎上
+- 追求數量和多樣性
+</divergent_thinking>
+
+<convergent_thinking>
+後期聚焦評估：
+- 可行性評估
+- 市場潛力分析
+- 技術實現難度
+- 商業模式可行性
+</convergent_thinking>
+</innovation_framework>
+
+<creative_techniques>
+<brainstorming_methods>
+- SCAMPER技法（Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse）
+- 強制關聯法
+- 反向思考
+- 角色扮演法
+</brainstorming_methods>
+
+<idea_development>
+對每個初步想法：
+1. 核心概念描述
+2. 潛在用戶價值
+3. 技術實現路徑
+4. 差異化競爭優勢
+5. 初步商業模式
+</idea_development>
+</creative_techniques>
+
+<thinking_level>think harder</thinking_level>
+
+<facilitation_style>
+- 保持開放和鼓勵的態度
+- 適時提供不同視角
+- 幫助克服創意障礙
+- 平衡創意與實用性
+</facilitation_style>
+</creative_collaboration>
+```
+
+---
+
+## 🔍 品質控制與優化
+
+### 📏 Claude專用評估指標
+
+#### 多維度品質評估框架
+
+<table>
+<tr>
+<th>評估維度</th>
+<th>具體指標</th>
+<th>Claude特色考量</th>
+<th>評估方法</th>
+</tr>
+<tr>
+<td><strong>思考透明度</strong></td>
+<td>推理過程可理解性</td>
+<td>• thinking標籤使用效果<br>• 邏輯鏈條清晰度</td>
+<td>人工評估+用戶反饋</td>
+</tr>
+<tr>
+<td><strong>結構化程度</strong></td>
+<td>XML組織效果</td>
+<td>• 標籤使用正確性<br>• 信息分類清晰度</td>
+<td>結構分析+格式檢查</td>
+</tr>
+<tr>
+<td><strong>角色一致性</strong></td>
+<td>長對話角色保持</td>
+<td>• 專業身份維持<br>• 回答風格統一</td>
+<td>對話分析+一致性測試</td>
+</tr>
+<tr>
+<td><strong>誠實度</strong></td>
+<td>不確定性承認</td>
+<td>• 知識邊界認知<br>• 假設明確標註</td>
+<td>事實核查+謙遜度評估</td>
+</tr>
+</table>
+
+#### 🔄 持續優化循環
+
+**Claude特色優化流程**
+
+```xml
+<optimization_cycle>
+<phase_1>基線建立</phase_1>
+<metrics>
+- 思考標籤使用頻率和效果
+- XML結構組織清晰度
+- 角色維持穩定性
+- 自我修正觸發率
+</metrics>
+
+<phase_2>問題識別</phase_2>
+<common_issues>
+- 思考過程過於冗長或簡略
+- XML標籤嵌套錯誤
+- 長對話中角色漂移
+- 過度自信或過度謙遜
+</common_issues>
+
+<phase_3>策略調整</phase_3>
+<optimization_techniques>
+- 調整思考預算層級
+- 優化XML結構模板
+- 強化角色提醒機制
+- 平衡自信與謙遜
+</optimization_techniques>
+
+<phase_4>效果驗證</phase_4>
+<testing_approach>
+- A/B測試不同提示版本
+- 長期對話品質監控
+- 用戶滿意度反饋收集
+- 任務完成品質評估
+</testing_approach>
+</optimization_cycle>
+```
+
+---
+
+## 🚀 企業級部署策略
+
+### 🏢 Claude專用實施框架
+
+#### 分階段導入計劃
+
+**階段一：基礎功能驗證（2-4週）**
+- XML結構化提示設計與測試
+- 思考預算層級選擇策略
+- 角色設定模板建立
+- 基本品質控制流程
+
+**階段二：進階功能整合（4-8週）**
+- 多步驟任務鏈開發
+- 自我修正機制實施
+- 長對話管理策略
+- 專業領域知識整合
+
+**階段三：規模化部署（8-12週）**
+- 企業級工作流程整合
+- 批量處理系統建立
+- 效果監控與優化
+- 團隊培訓與知識轉移
+
+#### 💼 Claude專用團隊角色
+
+**關鍵職位與技能要求**
+
+<table>
+<tr>
+<th width="25%">專業角色</th>
+<th width="35%">核心職責</th>
+<th width="40%">Claude特色技能</th>
+</tr>
+<tr>
+<td><strong>Claude提示架構師</strong></td>
+<td>• 設計XML結構化提示<br>• 優化思考預算使用<br>• 建立角色一致性框架</td>
+<td>• 深度理解憲章訓練特性<br>• 熟練掌握XML結構設計<br>• 思考預算管理經驗</td>
+</tr>
+<tr>
+<td><strong>對話流程設計師</strong></td>
+<td>• 設計多輪對話邏輯<br>• 維護長期角色一致性<br>• 優化用戶體驗流程</td>
+<td>• 理解Claude的對話特性<br>• 角色維護機制設計<br>• 上下文管理策略</td>
+</tr>
+<tr>
+<td><strong>品質評估專家</strong></td>
+<td>• 評估思考透明度<br>• 監控角色一致性<br>• 優化自我修正機制</td>
+<td>• Claude特色評估指標<br>• 憲章訓練效果評估<br>• 誠實度測試方法</td>
+</tr>
+</table>
+
+---
+
+## 🔗 API整合與開發
+
+### 🛠️ Claude API最佳實踐
+
+#### 企業級整合範例
+
+```python
+import anthropic
+import json
+from typing import Dict, Any, List
+from datetime import datetime
+
+class ClaudeEnterpriseEngine:
+    def __init__(self, api_key: str, model: str = "claude-3-opus-20240229"):
+        self.client = anthropic.Anthropic(api_key=api_key)
+        self.model = model
+        self.conversation_history = []
+    
+    def structured_business_analysis(self, 
+                                   task_description: str,
+                                   context_data: Dict[str, Any],
+                                   analysis_requirements: List[str],
+                                   thinking_level: str = "think hard") -> Dict[str, Any]:
+        """
+        Claude專用結構化商業分析引擎
+        """
+        
+        # 構建XML結構化提示
+        xml_prompt = f"""
+        <task>
+        {task_description}
+        </task>
+        
+        <context>
+        {self._format_context(context_data)}
+        </context>
+        
+        <requirements>
+        {self._format_requirements(analysis_requirements)}
+        </requirements>
+        
+        <thinking_level>{thinking_level}</thinking_level>
+        
+        <output_format>
+        請提供結構化的分析報告，包含：
+        1. 執行摘要
+        2. 詳細分析（針對每個要求）
+        3. 關鍵發現
+        4. 風險評估
+        5. 行動建議
+        6. 成功指標
+        
+        請在 <thinking> 標籤中展示你的分析過程。
+        </output_format>
+        """
+        
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=4000,
+                temperature=0.2,
+                system=self._get_business_analyst_system_prompt(),
+                messages=[
+                    {
+                        "role": "user", 
+                        "content": xml_prompt
+                    }
+                ]
+            )
+            
+            # 記錄對話歷史
+            self.conversation_history.append({
+                "timestamp": datetime.now().isoformat(),
+                "task": task_description,
+                "thinking_level": thinking_level,
+                "response": response.content[0].text
+            })
+            
+            return {
+                "success": True,
+                "analysis": response.content[0].text,
+                "metadata": {
+                    "model": self.model,
+                    "thinking_level": thinking_level,
+                    "timestamp": datetime.now().isoformat(),
+                    "token_usage": response.usage
+                }
+            }
+            
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e),
+                "timestamp": datetime.now().isoformat()
+            }
+    
+    def maintain_role_consistency(self, 
+                                role_definition: Dict[str, Any],
+                                current_task: str) -> str:
+        """
+        角色一致性維護系統
+        """
+        role_prompt = f"""
+        <role_definition>
+        <identity>{role_definition.get('identity', 'Professional Consultant')}</identity>
+        <expertise>{role_definition.get('expertise', [])}</expertise>
+        <communication_style>{role_definition.get('style', 'Professional and direct')}</communication_style>
+        <key_principles>{role_definition.get('principles', [])}</key_principles>
+        </role_definition>
+        
+        <role_reminder>
+        記住你是{role_definition.get('identity')}，在處理以下任務時請保持這個角色的特徵：
+        {current_task}
+        </role_reminder>
+        
+        <consistency_check>
+        在回答前請檢查：這個回答符合我的角色設定嗎？
+        </consistency_check>
+        """
+        return role_prompt
+    
+    def _format_context(self, context_data: Dict[str, Any]) -> str:
+        """格式化上下文數據為XML結構"""
+        formatted_context = ""
+        for key, value in context_data.items():
+            formatted_context += f"<{key}>{value}</{key}>\n"
+        return formatted_context
+    
+    def _format_requirements(self, requirements: List[str]) -> str:
+        """格式化要求列表"""
+        formatted_reqs = ""
+        for i, req in enumerate(requirements, 1):
+            formatted_reqs += f"{i}. {req}\n"
+        return formatted_reqs
+    
+    def _get_business_analyst_system_prompt(self) -> str:
+        """獲取商業分析師系統提示"""
+        return """
+        你是一位資深的商業策略分析師，具有以下特質：
+        
+        專業背景：
+        - 15年跨行業諮詢經驗
+        - 數據驅動決策專家
+        - 戰略規劃和執行專精
+        
+        工作風格：
+        - 結構化思考和表達
+        - 基於事實和數據分析
+        - 提供可執行的建議
+        - 承認不確定性和假設
+        
+        請在每次分析中：
+        1. 使用 <thinking> 標籤展示分析過程
+        2. 基於提供的數據進行分析
+        3. 明確指出假設和限制
+        4. 提供具體的行動建議
+        5. 評估風險和機會
+        """
+
+# 使用範例
+claude_engine = ClaudeEnterpriseEngine(api_key="your-api-key")
+
+# 市場進入分析
+context = {
+    "company_profile": "中型SaaS公司，年收入5000萬",
+    "target_market": "東南亞B2B軟件市場",
+    "competitive_landscape": "本土企業強勢，國際競爭激烈",
+    "resources": "預算500萬，團隊20人"
+}
+
+requirements = [
+    "評估市場機會和規模",
+    "分析競爭優勢和劣勢",
+    "制定進入策略選項",
+    "評估資源需求和時程",
+    "識別關鍵風險因素"
+]
+
+result = claude_engine.structured_business_analysis(
+    task_description="制定東南亞市場進入策略",
+    context_data=context,
+    analysis_requirements=requirements,
+    thinking_level="think harder"
+)
+
+print(result["analysis"])
+```
+
+---
+
+## 📚 延伸學習資源
+
+### 🎓 Anthropic官方資源
+
+#### 核心文檔與指南
+- **[Claude提示工程概述](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)**：官方提示工程完整指南
+- **[擴展思考技巧](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/extended-thinking-tips)**：思考預算使用指導
+- **[Claude 3使用指南](https://docs.anthropic.com/en/docs/build-with-claude/claude-3-guide)**：Claude 3系列特色功能
+- **[憲章訓練論文](https://www.anthropic.com/news/constitutional-ai-harmlessness-from-ai-feedback)**：理解Claude訓練原理
+
+#### 進階學習材料
+- **[XML提示最佳實踐](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags)**：結構化提示設計
+- **[多輪對話優化](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/long-context-tips)**：長對話管理策略
+- **[安全使用指南](https://docs.anthropic.com/en/docs/build-with-claude/responsible-use)**：負責任的AI使用
+
+### 🛠️ 實踐指南連結
+
+#### 跨平台比較學習
+- **OpenAI GPT對比**：[OpenAI提示工程指南](./03-OpenAI提示工程指南.md)
+- **Google Gemini對比**：[Gemini提示工程指南](./05-Gemini提示工程指南.md)
+- **其他平台策略**：[其他LLM提供商指南](./06-其他LLM提供商指南.md)
+
+#### 應用場景深入
+- **企業實戰案例**：[實戰案例與最佳實踐](./08-實戰案例與最佳實踐.md)
+- **教學應用指導**：[LLM特性與教學指南](./07-LLM特性與教學指南.md)
+
+---
+
+## 💡 關鍵要點總結
+
+<div style="background-color: #F0F4C3; padding: 20px; border-left: 4px solid #CDDC39; margin: 20px 0;">
+
+### 🎯 Claude核心優勢
+1. **憲章訓練特色**：有益、無害、誠實的AI助理，更值得信賴
+2. **XML結構支持**：天然的結構化理解能力，組織複雜任務更有效
+3. **思考預算控制**：可調節的深度思考，平衡效果與成本
+4. **透明推理過程**：thinking標籤讓您看到AI的思考過程
+
+### 🛠️ 實用技術要點
+1. **XML標籤結構化**：使用task、context、requirements等標籤組織提示
+2. **思考預算管理**：根據任務複雜度選擇think、think hard、ultrathink
+3. **角色一致性維護**：設計完整的角色定義和行為指導框架
+4. **多步驟任務鏈**：將複雜項目分解為連續的結構化階段
+
+### 📈 企業應用策略
+1. **結構化部署**：從XML基礎功能到進階特色功能的漸進式實施
+2. **專業團隊建設**：培養Claude專用的提示架構師和對話設計師
+3. **品質控制系統**：建立思考透明度、角色一致性等Claude特色評估指標
+4. **長期價值最大化**：利用憲章訓練特性建立可信賴的AI協作關係
+
+### 🔮 獨特價值主張
+1. **可信賴性**：憲章訓練確保AI助理的品德和誠實性
+2. **透明性**：思考過程可視化，讓您理解AI的推理邏輯
+3. **結構化**：天然支持複雜任務的結構化組織和管理
+4. **適應性**：靈活的思考預算，適應不同複雜度的任務需求
+
+</div>
+
+---
+
+<p align="center">
+<strong>🤖 發揮Claude獨特優勢，打造可信賴的AI協作夥伴！</strong><br>
+<em>從憲章訓練到企業級部署的完整實踐指南</em>
+</p>
+
+<p align="center">
+<a href="./05-Gemini提示工程指南.md">
+<img src="https://img.shields.io/badge/下一章-Gemini指南-blue?style=for-the-badge" alt="下一章">
+</a>
+<a href="./03-OpenAI提示工程指南.md">
+<img src="https://img.shields.io/badge/回顧-OpenAI指南-green?style=for-the-badge" alt="OpenAI指南">
+</a>
+<a href="./README.md">
+<img src="https://img.shields.io/badge/返回-主頁-orange?style=for-the-badge" alt="返回主頁">
+</a>
+</p>
