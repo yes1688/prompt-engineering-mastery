@@ -1,41 +1,171 @@
-# Claude 提示工程指南
+# Anthropic 提示工程指南
 
-> **Anthropic Claude 專業實踐手冊** - 掌握自然對話與深度思考的藝術
+> **專業AI安全與高品質對話** - 基於Anthropic Constitutional AI的完整實踐
 
-## 🚀 快速理解層 (3分鐘速覽)
+## 📖 快速導覽
 
-### Claude核心特色一覽
-Claude是Anthropic開發的AI助理，擁有三大獨特優勢：**憲章訓練(Constitutional AI)**確保誠實可信、**自然對話理解**讓溝通像與專家聊天、**深度思考能力**提供可控的分析深度。
+| 學習層次 | 目標用戶 | 閱讀時間 | 主要內容 |
+|---------|---------|----------|----------|
+| **🚀 快速理解層** | 決策者、新手 | 3分鐘 | 平台特色、基本認知 |
+| **💼 深度應用層** | 實踐者、開發者 | 15分鐘 | 公司實力、模型技術 |
+| **🔬 專家參考層** | 架構師、專家 | 30分鐘+ | 企業整合、最佳實踐 |
 
-### 💬 立即體驗 - 自然對話開始
+---
 
-**最簡單的使用方式**：直接用自然語言與Claude對話
+## 🚀 第一層：Claude平台（3分鐘速讀）
 
+### 💎 Claude平台核心優勢
+
+<div style="background-color: #E8F4FD; padding: 20px; border-left: 4px solid #1976D2; margin: 20px 0;">
+
+**🔥 Claude平台專業特色**
+
+| 特色 | 定義 | 企業應用價值 |
+|------|------|-------------|
+| **AI安全先驅** | 業界首個大規模部署Constitutional AI的平台 | 企業級安全保障，降低AI使用風險 |
+| **自然對話體驗** | 最接近人類專家溝通的AI助手 | 零學習成本，直接融入工作流程 |
+| **誠實可信回應** | 承認不確定性，避免編造信息 | 關鍵決策場景的可靠性保證 |
+| **深度思考模式** | 可控的分析深度和推理過程 | 複雜問題的專業級分析能力 |
+
+</div>
+
+### ⚡ Claude使用體驗優勢
+
+**最安全可信的AI對話體驗**
+- 🛡️ **誠實透明**：主動承認知識邊界，不會編造虛假信息
+- 🤝 **自然溝通**：如同與專業顧問對話，理解複雜語境
+- 🧠 **深度思考**：可請求更深入的分析和推理過程
+- ⚖️ **價值對齊**：強化有益、無害、誠實的價值觀
+
+### 🎯 主要應用場景
+
+<table>
+<tr>
+<th width="25%">🛡️ 風險控制</th>
+<th width="25%">📋 商業分析</th>
+<th width="25%">💼 專業諮詢</th>
+<th width="25%">🔬 研究輔助</th>
+</tr>
+<tr>
+<td>合規性檢查<br>風險評估<br>安全審核</td>
+<td>市場調研<br>策略分析<br>商業計劃</td>
+<td>法律諮詢<br>醫療輔助<br>教育指導</td>
+<td>文獻分析<br>假設驗證<br>邏輯推理</td>
+</tr>
+</table>
+
+### 💬 即時體驗示範
+
+**自然語言提示範例**：
 ```
 幫我分析一下我們公司進入東南亞市場的可行性。
 我們是一家300人的SaaS公司，主要做數據分析工具，年營收1億美元。
 請重點分析市場機會、競爭狀況和進入策略建議。
 ```
 
-**進階控制**：需要更深入分析時
+**深度思考模式**：
 ```
 請深入思考並分析...（同上內容）
 請提供詳細的SWOT分析和3年實施計劃。
 ```
 
-> 💡 **核心理念**：Claude像個有品德、會深度思考的專業顧問 - 用自然語言就能獲得專業分析，不需要複雜格式。
+---
+
+## 💼 第二層：Anthropic公司（深度了解）
+
+### 🏢 Anthropic企業背景與實力
+
+<div style="background-color: #FFF3E0; padding: 20px; border-left: 4px solid #FF9800; margin: 20px 0;">
+
+**💡 Anthropic公司戰略定位**
+
+**企業使命**：開發安全、有益、可理解的AI系統
+
+**核心優勢**：
+- 🛡️ **AI安全領導者**：業界首個系統性AI安全研究公司
+- 🧠 **Constitutional AI創新**：原創憲章訓練方法，確保AI價值對齊
+- 🏥 **敏感行業信賴**：醫療、金融、法律等高風險領域的首選
+- 📚 **學術深度**：持續發表頂級AI安全研究成果
+
+</div>
+
+#### 1. AI安全專業定位
+
+**🛡️ 安全AI研究的領導者**
+- **2021年創立**：由前OpenAI研究團隊創立，專注AI安全
+- **Constitutional AI突破**：開創性的AI價值對齊訓練方法
+- **安全優先文化**：將AI安全視為核心技術競爭力
+- **長期研究承諾**：持續投入AI對齊和可控性研究
+
+#### 2. Constitutional AI創新理念
+
+**⚖️ 憲章訓練的價值觀體系**
+- **Helpful有益**：積極協助用戶達成合理目標
+- **Harmless無害**：拒絕產生有害、偏見、危險內容
+- **Honest誠實**：承認不確定性，避免虛假信息
+- **Constitutional憲章**：基於明確價值觀的行為準則
+
+#### 3. 在敏感行業的應用優勢
+
+**🏥 高風險場景的可靠選擇**
+- **醫療健康**：診斷輔助、治療建議、醫學文獻分析
+- **金融服務**：風險評估、合規檢查、投資分析
+- **法律領域**：合約分析、判例研究、法規解讀
+- **教育場景**：個人化學習、知識評估、研究輔助
 
 ---
 
-## 📊 深度應用層 (15分鐘精通)
+## 🤖 第三層：Claude模型系列（技術核心）
 
-### 🎯 Claude自然對話優勢
+### 🚀 2025年最新模型陣容
 
-<div style="background-color: #E8F4FD; padding: 20px; border-left: 4px solid #1976D2; margin: 20px 0;">
+#### **Claude Sonnet 4：推薦預設模型**
 
-**Constitutional AI 憲章訓練體系讓Claude更值得信賴**
-- **Helpful 有益性**：積極提供相關有用協助
-- **Harmless 無害性**：拒絕有害、偏見內容  
+<div style="background-color: #E8F5E8; padding: 20px; border-left: 4px solid #4CAF50; margin: 20px 0;">
+
+**🎯 Claude Sonnet 4核心特色**
+
+**混合思考模式**：快速回應 + 深度思考的雙重能力
+- ⚡ **快速模式**：日常對話和簡單任務的即時回應
+- 🧠 **深度模式**：複雜問題的step-by-step推理過程
+- 🎛️ **智能切換**：根據任務複雜度自動選擇模式
+
+**企業應用優勢**：
+- 🔄 **靈活適應**：從快速問答到深度分析的無縫切換
+- 🛡️ **安全可靠**：基於Constitutional AI的價值對齊
+- 📊 **平衡性能**：速度與準確性的最佳平衡
+
+</div>
+
+#### **Claude Opus 4：最強編程和推理**
+
+<div style="background-color: #F3E5F5; padding: 20px; border-left: 4px solid #9C27B0; margin: 20px 0;">
+
+**🧠 Claude Opus 4超強能力**
+
+**最強大的編程模型**：
+- 💻 **代碼生成**：複雜系統架構設計和實現
+- 🔧 **系統設計**：大型軟體專案的架構規劃
+- 🐛 **問題診斷**：複雜bug分析和解決方案
+- 📚 **技術文檔**：詳細的技術說明和API文檔
+
+**推理能力突破**：
+- 🔬 **邏輯推理**：複雜邏輯鏈條的準確推導
+- 📊 **數據分析**：大規模數據的深度洞察
+- ⚖️ **決策支援**：多因素權衡的最優解分析
+- 🎯 **策略規劃**：長期策略的系統性制定
+
+</div>
+
+#### **模型選擇建議**
+
+| 使用場景 | 推薦模型 | 原因 |
+|---------|----------|------|
+| **日常溝通** | Claude Sonnet 4 | 快速回應，自然對話 |
+| **複雜分析** | Claude Sonnet 4（深度模式） | 可控的分析深度 |
+| **程式開發** | Claude Opus 4 | 業界最強編程能力 |
+| **敏感決策** | Claude Sonnet 4 | 安全可靠，誠實透明 |
+| **研究輔助** | Claude Opus 4 | 深度推理，邏輯嚴密 |
 - **Honest 誠實性**：承認不確定性與知識邊界
 - **Self-Correcting 自我修正**：主動識別錯誤推理
 
@@ -382,7 +512,7 @@ class ClaudeEnterpriseEngine:
 - **[XML提示最佳實踐](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags)**：結構化設計指導
 
 ### 相關指南連結
-- **平台比較**：[OpenAI提示工程指南](./03-OpenAI提示工程指南.md) | [Gemini提示工程指南](./05-Gemini提示工程指南.md)
+- **平台比較**：[OpenAI提示工程指南](./03-OpenAI提示工程指南.md) | [Google AI提示工程指南](./05-Google AI提示工程指南.md)
 - **實戰應用**：[實戰案例與最佳實踐](./08-實戰案例與最佳實踐.md)
 
 ---
@@ -393,7 +523,7 @@ class ClaudeEnterpriseEngine:
 </p>
 
 <p align="center">
-<a href="./05-Gemini提示工程指南.md">
+<a href="./05-Google AI提示工程指南.md">
 <img src="https://img.shields.io/badge/下一章-Gemini指南-blue?style=for-the-badge" alt="下一章">
 </a>
 <a href="./03-OpenAI提示工程指南.md">
@@ -1392,7 +1522,7 @@ print(result["analysis"])
 
 #### 跨平台比較學習
 - **OpenAI GPT對比**：[OpenAI提示工程指南](./03-OpenAI提示工程指南.md)
-- **Google Gemini對比**：[Gemini提示工程指南](./05-Gemini提示工程指南.md)
+- **Google AI對比**：[Google AI提示工程指南](./05-Google AI提示工程指南.md)
 - **其他平台策略**：[其他LLM提供商指南](./06-其他LLM提供商指南.md)
 
 #### 應用場景深入
@@ -1439,7 +1569,7 @@ print(result["analysis"])
 </p>
 
 <p align="center">
-<a href="./05-Gemini提示工程指南.md">
+<a href="./05-Google AI提示工程指南.md">
 <img src="https://img.shields.io/badge/下一章-Gemini指南-blue?style=for-the-badge" alt="下一章">
 </a>
 <a href="./03-OpenAI提示工程指南.md">

@@ -54,8 +54,8 @@
 **學習目標**：掌握不同AI平台的特色技術和最佳實踐
 
 4. [OpenAI提示工程指南](./03-OpenAI提示工程指南.md) - GPT系列專精技巧 (2.5小時)
-5. [Claude提示工程指南](./04-Claude提示工程指南.md) - XML結構化和憲章訓練 (2小時)
-6. [Gemini提示工程指南](./05-Gemini提示工程指南.md) - 多模態整合應用 (2小時)
+5. [Anthropic提示工程指南](./04-Anthropic提示工程指南.md) - Claude系列和Constitutional AI (2小時)
+6. [Google AI提示工程指南](./05-Google AI提示工程指南.md) - Gemini系列多模態應用 (2小時)
 7. [其他LLM提供商指南](./06-其他LLM提供商指南.md) - 多平台策略和選擇 (1.5小時，選讀)
 
 #### 🎯 **第三階段：實戰應用類** (2-3週)
@@ -106,11 +106,11 @@
 - **[OpenAI 提示工程指南](./03-OpenAI提示工程指南.md)**  
   *GPT系列模型最佳實踐*
 
-- **[Claude 提示工程指南](./04-Claude提示工程指南.md)**  
-  *Anthropic官方指導與XML結構*
+- **[Anthropic 提示工程指南](./04-Anthropic提示工程指南.md)**  
+  *Claude系列與Constitutional AI*
 
-- **[Gemini 提示工程指南](./05-Gemini提示工程指南.md)**  
-  *Google多模態AI策略*
+- **[Google AI 提示工程指南](./05-Google AI提示工程指南.md)**  
+  *Gemini系列多模態AI策略*
 
 - **[其他LLM提供商指南](./06-其他LLM提供商指南.md)**  
   *Meta、Microsoft等平台*
