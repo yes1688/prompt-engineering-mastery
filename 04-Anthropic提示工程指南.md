@@ -1,6 +1,6 @@
 # Anthropic 提示工程指南
 
-> **專業AI安全與高品質對話** - 基於Anthropic Constitutional AI的完整實踐
+> **最安全可信的AI助手** - 基於Anthropic Constitutional AI的完整指南
 
 ## 📖 快速導覽
 
@@ -16,9 +16,7 @@
 
 ### 💎 Claude平台核心優勢
 
-<div style="background-color: #E8F4FD; padding: 20px; border-left: 4px solid #1976D2; margin: 20px 0;">
-
-**🔥 Claude平台專業特色**
+**Claude平台的核心優勢**
 
 | 特色 | 定義 | 企業應用價值 |
 |------|------|-------------|
@@ -27,32 +25,22 @@
 | **誠實可信回應** | 承認不確定性，避免編造信息 | 關鍵決策場景的可靠性保證 |
 | **深度思考模式** | 可控的分析深度和推理過程 | 複雜問題的專業級分析能力 |
 
-</div>
-
 ### ⚡ Claude使用體驗優勢
 
 **最安全可信的AI對話體驗**
-- 🛡️ **誠實透明**：主動承認知識邊界，不會編造虛假信息
-- 🤝 **自然溝通**：如同與專業顧問對話，理解複雜語境
-- 🧠 **深度思考**：可請求更深入的分析和推理過程
-- ⚖️ **價值對齊**：強化有益、無害、誠實的價值觀
+- 🛡️ **誠實可靠**：主動承認不確定性，不會編造答案
+- 🤝 **自然對話**：像與專業顧問交流一樣自然流暢
+- 🧠 **深入分析**：可以要求更詳細的思考和解釋
+- ⚖️ **價值對齊**：始終保持有益、安全、誠實的原則
 
 ### 🎯 主要應用場景
 
-<table>
-<tr>
-<th width="25%">🛡️ 風險控制</th>
-<th width="25%">📋 商業分析</th>
-<th width="25%">💼 專業諮詢</th>
-<th width="25%">🔬 研究輔助</th>
-</tr>
-<tr>
-<td>合規性檢查<br>風險評估<br>安全審核</td>
-<td>市場調研<br>策略分析<br>商業計劃</td>
-<td>法律諮詢<br>醫療輔助<br>教育指導</td>
-<td>文獻分析<br>假設驗證<br>邏輯推理</td>
-</tr>
-</table>
+**主要應用場景：**
+
+- **🛡️ 風險控制**：合規性檢查、風險評估、安全審核
+- **📋 商業分析**：市場調研、策略分析、商業計劃
+- **💼 專業諮詢**：法律諮詢、醫療輔助、教育指導
+- **🔬 研究輔助**：文獻分析、假設驗證、邏輯推理
 
 ### 💬 即時體驗示範
 
@@ -462,25 +450,19 @@ Claude在預訓練階段大量接觸XML格式數據，形成對結構化標記�
 
 **企業級整合核心程式碼**：
 
-```python
-class ClaudeEnterpriseEngine:
-    def __init__(self, api_key: str):
-        self.client = anthropic.Anthropic(api_key=api_key)
-    
-    def structured_analysis(self, task: str, context: dict, 
-                          thinking_level: str = "think hard"):
-        xml_prompt = f"""
-        <task>{task}</task>
-        <context>{self._format_context(context)}</context>
-        <thinking_level>{thinking_level}</thinking_level>
-        <output_format>提供結構化分析報告</output_format>
-        """
-        
-        return self.client.messages.create(
-            model="claude-3-opus-20240229",
-            messages=[{"role": "user", "content": xml_prompt}]
-        )
-```
+**Claude API 整合要點**
+
+**基本整合考量：**
+- 選擇適合的Claude模型版本（Sonnet用於日常任務，Opus用於複雜分析）
+- 使用XML結構化提示組織複雜任務
+- 根據需要調整思考深度（think、think hard等）
+- 建立錯誤處理和重試機制
+
+**企業級部署要點：**
+- 實施安全認證和權限控制
+- 建立使用量監控和成本管理
+- 設計長對話的狀態管理
+- 制定品質評估和優化流程
 
 ---
 
@@ -512,8 +494,8 @@ class ClaudeEnterpriseEngine:
 - **[XML提示最佳實踐](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags)**：結構化設計指導
 
 ### 相關指南連結
-- **平台比較**：[OpenAI提示工程指南](./03-OpenAI提示工程指南.md) | [Google AI提示工程指南](./05-Google AI提示工程指南.md)
-- **實戰應用**：[實戰案例與最佳實踐](./08-實戰案例與最佳實踐.md)
+- **平台比較**：[OpenAI提示工程指南](./03-OpenAI提示工程指南.md) | [Google AI提示工程指南](05-Google AI提示工程指南.md)
+- **實戰應用**：[實戰案例與最佳實踐](08-實戰案例與最佳實踐.md)
 
 ---
 
@@ -529,7 +511,7 @@ class ClaudeEnterpriseEngine:
 <a href="./03-OpenAI提示工程指南.md">
 <img src="https://img.shields.io/badge/回顧-OpenAI指南-green?style=for-the-badge" alt="OpenAI指南">
 </a>
-<a href="./README.md">
+<a href="README.md">
 <img src="https://img.shields.io/badge/返回-主頁-orange?style=for-the-badge" alt="返回主頁">
 </a>
 </p>
@@ -551,7 +533,7 @@ class ClaudeEnterpriseEngine:
 </div>
 
 > 💡 **白話解釋**  
-> **什麼是憲章訓練？** 想像Claude受過「品德教育」，就像家長教小孩要誠實、善良、有禮貌一樣。Anthropic給Claude制定了一套「行為準則」（憲章），讓它不只聰明，還很有品德。所以Claude會說「我不確定」而不是瞎編答案，會拒絕幫您做壞事，會真心想幫助您解決問題。
+> **什麼是憲章訓練？** 想像Claude受過「品德教育」，就像家長教小孩要誠實、善良、有禮貌一樣。Anthropic給Claude制定了一套「行為準則」（憲章），讓它不只聰明，還很有品德。所以Claude會說「我不確定」而不是瞎編答案，會拒絕幫你做壞事，會真心想幫助你解決問題。
 
 ### 🎯 獨特功能對比
 
@@ -645,7 +627,7 @@ class ClaudeEnterpriseEngine:
 </div>
 
 > 💡 **白話解釋**  
-> **為什麼Claude特別喜歡XML？** 想像您在整理文件，用不同顏色的文件夾分類：紅色放「待辦事項」、藍色放「參考資料」、綠色放「完成事項」。XML標籤就像這些彩色文件夾，讓Claude能夠清楚知道哪部分是指令、哪部分是資料、哪部分是要求。因為Claude在「學習」時就是用這種方式整理信息的，所以它特別擅長理解這種結構。
+> **為什麼Claude特別喜歡XML？** 想像你在整理文件，用不同顏色的文件夾分類：紅色放「待辦事項」、藍色放「參考資料」、綠色放「完成事項」。XML標籤就像這些彩色文件夾，讓Claude能夠清楚知道哪部分是指令、哪部分是資料、哪部分是要求。因為Claude在「學習」時就是用這種方式整理信息的，所以它特別擅長理解這種結構。
 
 #### 💻 實際應用範例
 
@@ -829,7 +811,7 @@ class ClaudeEnterpriseEngine:
 #### 🎭 長期角色設定架構
 
 > 💡 **白話解釋**  
-> **什麼是角色一致性？** 想像您請了一位專業顧問，您希望他在整個項目期間都保持專業、一致的建議風格。但是如果對話很長，AI可能會「忘記」自己是誰，就像演員演到一半突然忘了自己演什麼角色。Claude的角色維護系統就像給演員一個「角色提醒卡」，讓他始終記得自己的專業身份。
+> **什麼是角色一致性？** 想像你請了一位專業顧問，你希望他在整個項目期間都保持專業、一致的建議風格。但是如果對話很長，AI可能會「忘記」自己是誰，就像演員演到一半突然忘了自己演什麼角色。Claude的角色維護系統就像給演員一個「角色提醒卡」，讓他始終記得自己的專業身份。
 
 **專業顧問角色模板**
 
@@ -1317,189 +1299,21 @@ class ClaudeEnterpriseEngine:
 
 ### 🛠️ Claude API最佳實踐
 
-#### 企業級整合範例
+#### 企業級整合要點
 
-```python
-import anthropic
-import json
-from typing import Dict, Any, List
-from datetime import datetime
+**Claude 專用整合策略**
 
-class ClaudeEnterpriseEngine:
-    def __init__(self, api_key: str, model: str = "claude-3-opus-20240229"):
-        self.client = anthropic.Anthropic(api_key=api_key)
-        self.model = model
-        self.conversation_history = []
-    
-    def structured_business_analysis(self, 
-                                   task_description: str,
-                                   context_data: Dict[str, Any],
-                                   analysis_requirements: List[str],
-                                   thinking_level: str = "think hard") -> Dict[str, Any]:
-        """
-        Claude專用結構化商業分析引擎
-        """
-        
-        # 構建XML結構化提示
-        xml_prompt = f"""
-        <task>
-        {task_description}
-        </task>
-        
-        <context>
-        {self._format_context(context_data)}
-        </context>
-        
-        <requirements>
-        {self._format_requirements(analysis_requirements)}
-        </requirements>
-        
-        <thinking_level>{thinking_level}</thinking_level>
-        
-        <output_format>
-        請提供結構化的分析報告，包含：
-        1. 執行摘要
-        2. 詳細分析（針對每個要求）
-        3. 關鍵發現
-        4. 風險評估
-        5. 行動建議
-        6. 成功指標
-        
-        請在 <thinking> 標籤中展示你的分析過程。
-        </output_format>
-        """
-        
-        try:
-            response = self.client.messages.create(
-                model=self.model,
-                max_tokens=4000,
-                temperature=0.2,
-                system=self._get_business_analyst_system_prompt(),
-                messages=[
-                    {
-                        "role": "user", 
-                        "content": xml_prompt
-                    }
-                ]
-            )
-            
-            # 記錄對話歷史
-            self.conversation_history.append({
-                "timestamp": datetime.now().isoformat(),
-                "task": task_description,
-                "thinking_level": thinking_level,
-                "response": response.content[0].text
-            })
-            
-            return {
-                "success": True,
-                "analysis": response.content[0].text,
-                "metadata": {
-                    "model": self.model,
-                    "thinking_level": thinking_level,
-                    "timestamp": datetime.now().isoformat(),
-                    "token_usage": response.usage
-                }
-            }
-            
-        except Exception as e:
-            return {
-                "success": False,
-                "error": str(e),
-                "timestamp": datetime.now().isoformat()
-            }
-    
-    def maintain_role_consistency(self, 
-                                role_definition: Dict[str, Any],
-                                current_task: str) -> str:
-        """
-        角色一致性維護系統
-        """
-        role_prompt = f"""
-        <role_definition>
-        <identity>{role_definition.get('identity', 'Professional Consultant')}</identity>
-        <expertise>{role_definition.get('expertise', [])}</expertise>
-        <communication_style>{role_definition.get('style', 'Professional and direct')}</communication_style>
-        <key_principles>{role_definition.get('principles', [])}</key_principles>
-        </role_definition>
-        
-        <role_reminder>
-        記住你是{role_definition.get('identity')}，在處理以下任務時請保持這個角色的特徵：
-        {current_task}
-        </role_reminder>
-        
-        <consistency_check>
-        在回答前請檢查：這個回答符合我的角色設定嗎？
-        </consistency_check>
-        """
-        return role_prompt
-    
-    def _format_context(self, context_data: Dict[str, Any]) -> str:
-        """格式化上下文數據為XML結構"""
-        formatted_context = ""
-        for key, value in context_data.items():
-            formatted_context += f"<{key}>{value}</{key}>\n"
-        return formatted_context
-    
-    def _format_requirements(self, requirements: List[str]) -> str:
-        """格式化要求列表"""
-        formatted_reqs = ""
-        for i, req in enumerate(requirements, 1):
-            formatted_reqs += f"{i}. {req}\n"
-        return formatted_reqs
-    
-    def _get_business_analyst_system_prompt(self) -> str:
-        """獲取商業分析師系統提示"""
-        return """
-        你是一位資深的商業策略分析師，具有以下特質：
-        
-        專業背景：
-        - 15年跨行業諮詢經驗
-        - 數據驅動決策專家
-        - 戰略規劃和執行專精
-        
-        工作風格：
-        - 結構化思考和表達
-        - 基於事實和數據分析
-        - 提供可執行的建議
-        - 承認不確定性和假設
-        
-        請在每次分析中：
-        1. 使用 <thinking> 標籤展示分析過程
-        2. 基於提供的數據進行分析
-        3. 明確指出假設和限制
-        4. 提供具體的行動建議
-        5. 評估風險和機會
-        """
+**核心優勢發揮：**
+- **XML結構化設計**：充分利用Claude的天然結構理解能力組織複雜任務
+- **思考預算管理**：根據任務複雜度選擇適當的思考深度（think、think hard等）
+- **角色一致性維護**：建立完整的角色定義框架，確保長對話的品質
+- **透明推理過程**：利用thinking標籤了解AI的決策邏輯
 
-# 使用範例
-claude_engine = ClaudeEnterpriseEngine(api_key="your-api-key")
-
-# 市場進入分析
-context = {
-    "company_profile": "中型SaaS公司，年收入5000萬",
-    "target_market": "東南亞B2B軟件市場",
-    "competitive_landscape": "本土企業強勢，國際競爭激烈",
-    "resources": "預算500萬，團隊20人"
-}
-
-requirements = [
-    "評估市場機會和規模",
-    "分析競爭優勢和劣勢",
-    "制定進入策略選項",
-    "評估資源需求和時程",
-    "識別關鍵風險因素"
-]
-
-result = claude_engine.structured_business_analysis(
-    task_description="制定東南亞市場進入策略",
-    context_data=context,
-    analysis_requirements=requirements,
-    thinking_level="think harder"
-)
-
-print(result["analysis"])
-```
+**實施建議：**
+- 建立XML模板庫，標準化常用的企業分析任務
+- 設計角色定義和行為指導框架
+- 實施品質控制機制，評估思考透明度和角色一致性
+- 建立長期價值導向的AI協作模式
 
 ---
 
@@ -1521,13 +1335,13 @@ print(result["analysis"])
 ### 🛠️ 實踐指南連結
 
 #### 跨平台比較學習
-- **OpenAI GPT對比**：[OpenAI提示工程指南](./03-OpenAI提示工程指南.md)
-- **Google AI對比**：[Google AI提示工程指南](./05-Google AI提示工程指南.md)
-- **其他平台策略**：[其他LLM提供商指南](./06-其他LLM提供商指南.md)
+- **OpenAI GPT對比**：[OpenAI提示工程指南](03-OpenAI提示工程指南.md)
+- **Google AI對比**：[Google AI提示工程指南](05-Google AI提示工程指南.md)
+- **其他平台策略**：[其他LLM提供商指南](06-其他LLM提供商指南.md)
 
 #### 應用場景深入
-- **企業實戰案例**：[實戰案例與最佳實踐](./08-實戰案例與最佳實踐.md)
-- **教學應用指導**：[LLM特性與教學指南](./07-LLM特性與教學指南.md)
+- **企業實戰案例**：[實戰案例與最佳實踐](08-實戰案例與最佳實踐.md)
+- **教學應用指導**：[LLM特性與教學指南](07-LLM特性與教學指南.md)
 
 ---
 
@@ -1539,7 +1353,7 @@ print(result["analysis"])
 1. **憲章訓練特色**：有益、無害、誠實的AI助理，更值得信賴
 2. **XML結構支持**：天然的結構化理解能力，組織複雜任務更有效
 3. **思考預算控制**：可調節的深度思考，平衡效果與成本
-4. **透明推理過程**：thinking標籤讓您看到AI的思考過程
+4. **透明推理過程**：thinking標籤讓你看到AI的思考過程
 
 ### 🛠️ 實用技術要點
 1. **XML標籤結構化**：使用task、context、requirements等標籤組織提示
@@ -1555,7 +1369,7 @@ print(result["analysis"])
 
 ### 🔮 獨特價值主張
 1. **可信賴性**：憲章訓練確保AI助理的品德和誠實性
-2. **透明性**：思考過程可視化，讓您理解AI的推理邏輯
+2. **透明性**：思考過程可視化，讓你理解AI的推理邏輯
 3. **結構化**：天然支持複雜任務的結構化組織和管理
 4. **適應性**：靈活的思考預算，適應不同複雜度的任務需求
 
@@ -1575,7 +1389,7 @@ print(result["analysis"])
 <a href="./03-OpenAI提示工程指南.md">
 <img src="https://img.shields.io/badge/回顧-OpenAI指南-green?style=for-the-badge" alt="OpenAI指南">
 </a>
-<a href="./README.md">
+<a href="README.md">
 <img src="https://img.shields.io/badge/返回-主頁-orange?style=for-the-badge" alt="返回主頁">
 </a>
 </p>

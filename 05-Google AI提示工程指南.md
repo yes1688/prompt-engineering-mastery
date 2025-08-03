@@ -1,6 +1,6 @@
 # Google AI 提示工程指南
 
-> **駕馭Google多模態AI的專業指南** - 從基礎設定到企業級應用
+> **讓Gemini成為你最強大的多模態AI助手** - 從基礎設定到企業級應用
 
 ## 📖 快速導覽
 
@@ -16,9 +16,7 @@
 
 ### 💎 Gemini平台核心優勢
 
-<div style="background-color: #E1F5FE; padding: 20px; border-left: 4px solid #03A9F4; margin: 20px 0;">
-
-**🔥 Gemini平台專業特色**
+**Gemini平台的核心優勢**
 
 | 特色 | 定義 | 企業應用價值 |
 |------|------|-------------|
@@ -27,32 +25,22 @@
 | **思考模式創新** | 預設開啟thinking功能的推理模型 | 透明化AI推理過程，提升可信度 |
 | **全球基礎設施** | 基於Google Cloud的全球部署能力 | 企業級可用性和擴展性保證 |
 
-</div>
-
 ### ⚡ Gemini使用體驗優勢
 
 **最強大的多模態AI體驗**
-- 🖼️ **統一處理**：文字、圖像、音頻、視頻的一體化分析
-- 🌐 **生態無縫**：與Gmail、Drive、Docs等工具深度整合
-- 🧠 **透明思考**：展示AI推理過程，增強決策可信度
-- ☁️ **企業級**：基於Google Cloud的穩定性和安全性
+- 🖼️ **多模態能力**：同時處理文字、圖像、音頻、視頻的強大能力
+- 🌐 **無縫整合**：與Google Workspace工具的深度整合
+- 🧠 **透明分析**：可以看到AI的思考過程，提高可信度
+- ☁️ **企業級穩定**：基於Google Cloud的全球基礎設施
 
 ### 🎯 主要應用場景
 
-<table>
-<tr>
-<th width="25%">🖼️ 多媒體分析</th>
-<th width="25%">☁️ 企業整合</th>
-<th width="25%">📊 數據洞察</th>
-<th width="25%">🤖 智能助手</th>
-</tr>
-<tr>
-<td>圖像識別<br>視頻分析<br>文檔理解</td>
-<td>Workspace整合<br>Cloud服務<br>API生態</td>
-<td>趨勢分析<br>報表生成<br>預測建模</td>
-<td>任務自動化<br>智能回覆<br>內容創作</td>
-</tr>
-</table>
+**主要應用場景：**
+
+- **🖼️ 多媒體分析**：圖像識別、視頻分析、文檔理解
+- **☁️ 企業整合**：Workspace整合、Cloud服務、API生態
+- **📊 數據洞察**：趨勢分析、報表生成、預測建模
+- **🤖 智能助手**：任務自動化、智能回覆、內容創作
 
 ---
 
@@ -155,42 +143,22 @@
 
 </div>
 
-### ⚡ 15秒快速設定
+### ⚡ 快速上手設定
 
-**最常用參數組合**
+**常用參數建議：**
 
-```python
-# 商業分析場景（平衡準確性與創新）
-config = {
-    "temperature": 0.4,
-    "top_p": 0.8,
-    "max_tokens": 1500
-}
-
-# 技術文檔場景（追求精確）  
-config = {
-    "temperature": 0.2,
-    "top_p": 0.1,
-    "max_tokens": 1000
-}
-```
+- **商業分析場景**：溫度值0.4，適合需要平衡準確性與創意的任務
+- **技術文檔場景**：溫度值0.2，適合需要高精確度的任務
+- **創意寫作場景**：溫度值0.7-0.9，適合需要創新思維的任務
 
 ### 🎯 核心應用場景
 
-<table>
-<tr>
-<th width="25%">📊 數據分析</th>
-<th width="25%">🖼️ 圖像理解</th>
-<th width="25%">💻 代碼生成</th>
-<th width="25%">📝 內容創作</th>
-</tr>
-<tr>
-<td>市場趨勢分析<br>財務報表解讀<br>風險評估</td>
-<td>產品品質檢測<br>醫療影像分析<br>安防監控</td>
-<td>API文檔生成<br>測試用例創建<br>架構設計</td>
-<td>行銷文案<br>技術說明<br>培訓教材</td>
-</tr>
-</table>
+**核心應用場景：**
+
+- **📊 數據分析**：市場趨勢分析、財務報表解讀、風險評估
+- **🖼️ 圖像理解**：產品品質檢測、醫療影像分析、安防監控
+- **💻 技術支援**：文檔生成、測試用例創建、架構設計
+- **📝 內容創作**：行銷文案、技術說明、培訓教材
 
 ---
 
@@ -261,59 +229,35 @@ config = {
 
 #### 安全合規整合
 
-**GDPR合規的Gemini實作**
+**企業級安全合規要點**
 
-```python
-class SecureGeminiService:
-    def __init__(self, encryption_key: str):
-        self.model = genai.GenerativeModel('gemini-pro')
-        self.content_filter = PrivacyFilter()
-        
-    def process_sensitive_data(self, prompt: str) -> Dict:
-        # 1. 個人資料去識別化
-        anonymized_prompt = self.content_filter.anonymize_pii(prompt)
-        
-        # 2. 設定最嚴格參數確保一致性
-        config = genai.GenerationConfig(
-            temperature=0.1,
-            top_p=0.1,
-            max_output_tokens=1000
-        )
-        
-        # 3. 處理請求並記錄審計軌跡
-        response = self.model.generate_content(
-            anonymized_prompt, 
-            generation_config=config
-        )
-        
-        self._log_compliance_audit(prompt, response)
-        return {"response": response.text, "compliance_checked": True}
-```
+**資料保護措施：**
+- 個人敏感資料的自動去識別化處理
+- 嚴格的參數設定確保輸出一致性和安全性
+- 完整的審計記錄追蹤所有處理過程
+- 符合GDPR、SOC 2等國際合規標準
+
+**實施建議：**
+- 建立內容過濾和隱私保護機制
+- 設計安全的API整合架構
+- 制定資料處理和儲存政策
+- 定期進行安全性評估和更新
 
 #### 批量處理最佳化
 
-**高效能企業級部署**
+**批量處理最佳化策略**
 
-```python
-async def batch_analysis_pipeline(documents: List[str]) -> List[Dict]:
-    """處理大量文件的並行分析管道"""
-    
-    # 智能分組：根據文件特性選擇最適參數
-    analysis_groups = {
-        "financial": {"temperature": 0.2, "max_tokens": 800},
-        "creative": {"temperature": 1.0, "max_tokens": 1200},
-        "technical": {"temperature": 0.3, "max_tokens": 1000}
-    }
-    
-    # 並行處理每個群組
-    tasks = []
-    for group_type, config in analysis_groups.items():
-        group_docs = classify_documents(documents, group_type)
-        tasks.append(process_document_group(group_docs, config))
-    
-    results = await asyncio.gather(*tasks)
-    return merge_results(results)
-```
+**智能分組處理：**
+- 根據文件類型自動選擇最適合的處理參數
+- 財務文件：使用低溫度值（0.2）確保準確性
+- 創意內容：使用高溫度值（1.0）增加創新性
+- 技術文檔：使用中溫度值（0.3）平衡準確性與靈活性
+
+**效能優化要點：**
+- 並行處理多個文件群組提高效率
+- 智能負載平衡避免系統過載
+- 結果整合和品質檢查機制
+- 成本效益監控和優化
 
 ---
 
@@ -341,33 +285,19 @@ async def batch_analysis_pipeline(documents: List[str]) -> List[Dict]:
 
 #### 科學化A/B測試
 
-**提示效果量化評估系統**
+**提示效果量化評估框架**
 
-```python
-class GeminiOptimizationFramework:
-    def __init__(self):
-        self.test_metrics = {
-            "response_quality": {"weight": 0.4, "measurement": "human_rating"},
-            "processing_speed": {"weight": 0.2, "measurement": "latency_ms"},
-            "cost_efficiency": {"weight": 0.2, "measurement": "tokens_per_task"},
-            "business_value": {"weight": 0.2, "measurement": "outcome_score"}
-        }
-    
-    def run_optimization_cycle(self, base_prompt: str, variants: List[str]):
-        """執行完整的提示優化週期"""
-        
-        # Phase 1: 並行測試多個變體
-        test_results = self.parallel_ab_test(base_prompt, variants)
-        
-        # Phase 2: 統計顯著性驗證
-        winner = self.statistical_analysis(test_results)
-        
-        # Phase 3: 生產環境灰度發布
-        self.gradual_rollout(winner, rollout_percentage=10)
-        
-        # Phase 4: 持續監控和調整
-        return self.continuous_monitoring(winner)
-```
+**評估維度與權重：**
+- **回應品質**（40%）：透過專家評分和用戶反饋測量
+- **處理速度**（20%）：測量API回應時間和延遲
+- **成本效益**（20%）：評估每項任務的token使用效率
+- **商業價值**（20%）：衡量實際業務成果和ROI
+
+**優化循環流程：**
+1. **並行測試**：同時測試多個提示變體
+2. **統計驗證**：確保結果具有統計顯著性
+3. **灰度發布**：逐步推廣最佳版本
+4. **持續監控**：長期追蹤效果並持續調整
 
 ### 🌐 跨模態應用創新
 
@@ -562,8 +492,8 @@ pip install structlog  # 結構化日誌
 ---
 
 <p align="center">
-<strong>🚀 恭喜您完成Gemini提示工程專家級指南！</strong><br>
-<em>您已具備企業級Gemini應用的完整知識體系</em>
+<strong>🚀 恭喜你完成Gemini提示工程專家級指南！</strong><br>
+<em>你已具備企業級Gemini應用的完整知識體系</em>
 </p>
 
 <p align="center">
@@ -573,7 +503,7 @@ pip install structlog  # 結構化日誌
 <a href="./04-Anthropic提示工程指南.md">
 <img src="https://img.shields.io/badge/回顧-Claude指南-green?style=for-the-badge" alt="Claude指南">
 </a>
-<a href="./README.md">
+<a href="README.md">
 <img src="https://img.shields.io/badge/返回-主頁-orange?style=for-the-badge" alt="返回主頁">
 </a>
 </p>
