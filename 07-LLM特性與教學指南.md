@@ -637,7 +637,7 @@ AI能夠將不同領域的知識進行整合，善於提供跨學科的視角。
 </p>
 
 <p align="center">
-<a href="./08-實戰案例與最佳實踐.md">
+<a href="./08A-企業級實戰案例.md">
 <img src="https://img.shields.io/badge/下一章-實戰案例-blue?style=for-the-badge" alt="下一章">
 </a>
 <a href="./06-其他LLM提供商指南.md">

@@ -827,9 +827,9 @@ AI成熟度五階段模型：
 
 ### 🔄 跨平台整合學習
 
-- **[Anthropic企業應用指南](04-Anthropic提示工程指南.md)**：Claude系列與Constitutional AI
+- **[Claude核心特性指南](04A-Claude核心特性指南.md)**：Claude系列與Constitutional AI
 - **[Google AI商業應用](05-Google AI提示工程指南.md)**：Gemini系列企業整合
-- **[實戰案例集](08-實戰案例與最佳實踐.md)**：跨行業應用範例
+- **[企業級實戰案例](08A-企業級實戰案例.md)**：跨行業應用範例
 
 ---
 
