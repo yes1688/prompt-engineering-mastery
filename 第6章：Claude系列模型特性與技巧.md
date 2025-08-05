@@ -865,7 +865,7 @@ continuous_improvement:
 </p>
 
 <p align="center">
-<a href="第5章：OpenAI GPT系列完整應用指南.md">
+<a href="%E7%AC%AC5%E7%AB%A0%EF%BC%9AOpenAI%20GPT%E7%B3%BB%E5%88%97%E5%AE%8C%E6%95%B4%E6%87%89%E7%94%A8%E6%8C%87%E5%8D%97.md">
 <img src="https://img.shields.io/badge/上一章-GPT系列指南-blue?style=for-the-badge" alt="上一章">
 </a>
 <a href="第7章：Claude進階應用與企業部署.md">
